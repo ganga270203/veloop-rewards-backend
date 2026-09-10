@@ -75,6 +75,11 @@ CORS_ALLOWED_ORIGINS = [
     "https://veloop-rewards-frontend.onrender.com",
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://veloop-rewards-frontend.onrender.com",
+]
+
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
