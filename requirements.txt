@@ -1,19 +1,8 @@
-asgiref==3.12.1
-click==8.5.0
-dj-database-url==3.1.2
 Django==5.2.17
-django-cors-headers==4.9.0
 djangorestframework==3.18.0
+django-cors-headers==4.9.0
+dj-database-url==3.1.2
 gunicorn==26.2.0
-h11==0.16.0
-mysqlclient==2.2.8
-<<<<<<< HEAD
-psycopg==3.3.5
-psycopg-binary==3.3.5
-=======
->>>>>>> 5a56018356c36d6ea92fa204d8dc0fabbd160de4
-psycopg2-binary==2.9.12
-sqlparse==0.6.0
-tzdata==2026.3
-uvicorn==0.52.4
 whitenoise==6.12.0
+psycopg[binary]==3.3.5
+mysqlclient==2.2.8
