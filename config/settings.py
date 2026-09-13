@@ -33,7 +33,7 @@ DEBUG = os.environ.get("DEBUG", "False") == "True"
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    ".onrender.com",
+    ".vercel.app",
 ]
 
 
@@ -72,11 +72,10 @@ ROOT_URLCONF = "config.urls"
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://veloop-rewards-frontend.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://veloop-rewards-frontend.onrender.com",
+    "http://localhost:5173",
 ]
 
 
@@ -99,12 +98,15 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-if os.environ.get("DATABASE_URL"):
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
+if DATABASE_URL:
     DATABASES = {
-        "default": dj_database_url.config(
-            default=os.environ.get("postgresql://veloop_rewards_user:sgdAW9JxDGdSexsQroQVaNPozM5JpKkF@dpg-daglsbp42hec73ctkkig-a/veloop_rewards")
+        "default": dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True,
         )
     }
 else:
