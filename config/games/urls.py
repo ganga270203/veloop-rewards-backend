@@ -1,20 +1,25 @@
-from django.urls import path
+from django.contrib import admin
+from django.urls import include, path, re_path
 
-from .views import ScoreListView
-
-from .views import (GameListView,GameDetailView,ScoreListView,LoginView, RegisterView,)
+from .views import frontend, frontend_asset
 
 
 urlpatterns = [
+    path("admin/", admin.site.urls),
 
-    path( "games/",GameListView.as_view(),name="games"),
+    path("api/", include("games.urls")),
 
-    path( "games/<int:pk>/",GameDetailView.as_view(),name="game-detail"),
+    # React assets
+    re_path(
+        r"^assets/(?P<path>.*)$",
+        frontend_asset,
+        name="frontend-asset",
+    ),
 
-    path("scores/",ScoreListView.as_view(),name="scores"),
-
-    path("login/",LoginView.as_view(),name="login"),
-
-    path("register/",RegisterView.as_view(),name="register"),
-
+    # React application
+    re_path(
+        r"^(?!api/|admin/|assets/).*$",
+        frontend,
+        name="frontend",
+    ),
 ]
