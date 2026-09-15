@@ -3,4 +3,4 @@ name = "veloop-rewards"
 version = "1.0.0"
 
 [tool.vercel.scripts]
-build = "python manage.py migrate && python manage.py seed_games"
+build = "python manage.py migrate"
