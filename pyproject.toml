@@ -1,6 +1,16 @@
 [project]
 name = "veloop-rewards"
 version = "1.0.0"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "Django==5.2.17",
+    "djangorestframework==3.18.0",
+    "django-cors-headers==4.9.0",
+    "dj-database-url==3.1.2",
+    "gunicorn==26.2.0",
+    "whitenoise==6.12.0",
+    "psycopg[binary]==3.3.5",
+]
 
 [tool.vercel.scripts]
 build = "python manage.py migrate"
